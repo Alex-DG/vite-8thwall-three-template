@@ -17,7 +17,7 @@ const setCamera = ({ sizes }) => {
 
   // Set the initial camera position relative to the scene we just laid out. This must be at a
   // height greater than y=0.
-  camera.position.set(0, 1, 4)
+  camera.position.set(0, 4, 8)
 
   XR8.XrController.updateCameraProjectionMatrix({
     origin: camera.position,

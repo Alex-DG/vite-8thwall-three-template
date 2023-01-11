@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -15,6 +15,7 @@
     "vite-plugin-glsl": "0.5.4"
   },
   "dependencies": {
+    "howler": "^2.2.3",
     "three": "0.147.0"
   }
 }

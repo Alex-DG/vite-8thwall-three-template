@@ -8,6 +8,7 @@ export default {
     '**/*.glb',
     '**/*.gltf',
     '**/*.fbx',
+    '**/*.mp3',
     '**/*.mp4',
     '**/*.webp',
     '**/*.png',
