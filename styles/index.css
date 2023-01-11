@@ -28,15 +28,17 @@ body {
 
 /* PLAYER AUDIO */
 
-#toggleAudio {
+#toggleAudioPlayer {
   height: 15px;
   width: 15px;
   background: transparent;
-  border: 2px solid rgb(255, 255, 255, 0.5);
+  border: 2px solid rgb(255, 255, 255, 1);
   background: rgb(255, 255, 255);
   border-radius: 50%;
   display: inline-block;
   margin: 0.7rem 0;
+
+  transition: background 0.5s;
 }
 
 .audio-container {
@@ -61,7 +63,9 @@ body {
 #audioPlayer {
   opacity: 1;
 
-  box-shadow: 5px 5px 5px 0 rgba(243, 113, 237, 0.6);
+  transition: opacity 0.5s;
+
+  box-shadow: 6px 6px 6px 1px rgba(243, 113, 237, 0.6);
 
   padding: 0.8rem;
 
@@ -220,36 +224,16 @@ body {
 
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-
-  padding: 2.5rem 0;
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center; */
+  gap: 1.25em;
+  padding: 1.5rem 0;
 }
 .list-song {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-size: 1.8rem;
-  height: 10%;
-  width: 100%;
-
   text-align: center;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #fff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);

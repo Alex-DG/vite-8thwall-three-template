@@ -3,9 +3,23 @@ import track2 from '../../../assets/audio/Make You Move - Ofshane.mp3'
 import track3 from '../../../assets/audio/Indecision - Dyalla.mp3'
 import track4 from '../../../assets/audio/Gemini - half.cool.mp3'
 import track5 from '../../../assets/audio/India Fuse - French Fuse.mp3'
+import track6 from '../../../assets/audio/Curtain Call - Pandrezz.mp4'
+import track7 from '../../../assets/audio/How is It Supposed to Feel (Clean) - NEFFEX.mp3'
+import track8 from '../../../assets/audio/This Close - half.cool.mp3'
+import track9 from '../../../assets/audio/Pans Labyrinth - josh pan.mp3'
 
 // List of tracks available from our playlist
-const sources = [track1, track2, track3, track4, track5]
+const sources = [
+  track1,
+  track2,
+  track3,
+  track4,
+  track5,
+  track6,
+  track7,
+  track8,
+  track9,
+]
 
 // Cache references to DOM elements.
 const elms = [
@@ -27,7 +41,7 @@ const elms = [
   'barEmpty',
   'barFull',
   'sliderBtn',
-  'toggleAudio',
+  'toggleAudioPlayer',
   'audioPlayer',
 ]
 
@@ -48,10 +62,10 @@ const Player = function (playlist) {
   track.innerHTML = '1. ' + playlist[0].title
 
   // Setup the playlist display.
-  playlist.forEach(function (song) {
+  playlist.forEach((song, index) => {
     var div = document.createElement('div')
     div.className = 'list-song'
-    div.innerHTML = song.title
+    div.innerHTML = `${index + 1}. ${song.title}`
     div.onclick = function () {
       player.skipTo(playlist.indexOf(song))
     }
@@ -90,7 +104,6 @@ Player.prototype = {
 
           // Start the wave animation if we have already loaded
           pauseBtn.style.display = 'block'
-          console.log({ pauseBtn })
         },
         onload: () => {
           // Start the wave animation.
@@ -190,24 +203,6 @@ Player.prototype = {
   },
 
   /**
-   * Set the volume and update the volume slider display.
-   * @param  {Number} val Volume between 0 and 1.
-   */
-  volume: function (val) {
-    var self = this
-
-    console.log({ self, Howler })
-    // Update the global volume (affecting all Howls).
-    Howler.volume(val)
-
-    // Update the display on the slider.
-    var barWidth = (val * 90) / 100
-    barFull.style.width = barWidth * 100 + '%'
-    sliderBtn.style.left =
-      window.innerWidth * barWidth + window.innerWidth * 0.05 - 25 + 'px'
-  },
-
-  /**
    * Seek to a new position in the currently playing track.
    * @param  {Number} per Percentage through the song to skip.
    */
@@ -260,22 +255,6 @@ Player.prototype = {
   },
 
   /**
-   * Toggle the volume display on/off.
-   */
-  toggleVolume: function () {
-    var self = this
-    var display = volume.style.display === 'block' ? 'none' : 'block'
-
-    setTimeout(
-      function () {
-        volume.style.display = display
-      },
-      display === 'block' ? 0 : 500
-    )
-    volume.className = display === 'block' ? 'fadein' : 'fadeout'
-  },
-
-  /**
    * Format the time from seconds to M:SS.
    * @param  {Number} secs Seconds to format.
    * @return {String}      Formatted time.
@@ -317,22 +296,41 @@ const player = new Player([
     file: 'India Fuse - French Fuse.mp3',
     howl: null,
   },
+  {
+    title: 'Curtain Call',
+    file: 'Curtain Call - Pandrezz.mp4',
+    howl: null,
+  },
+  {
+    title: 'How is It Supposed to Feel',
+    file: 'How is It Supposed to Feel (Clean) - NEFFEX.mp3',
+    howl: null,
+  },
+  {
+    title: 'This Close',
+    file: 'This Close - half.cool.mp3',
+    howl: null,
+  },
+  {
+    title: 'Pans Labyrinth',
+    file: 'Pans Labyrinth - josh pan.mp3',
+    howl: null,
+  },
 ])
 
 // Bind our player controls.
-playBtn.addEventListener('click', function () {
+playBtn.addEventListener('click', () => {
   player.play()
 })
-pauseBtn.addEventListener('click', function () {
+pauseBtn.addEventListener('click', () => {
   player.pause()
 })
-prevBtn.addEventListener('click', function () {
+prevBtn.addEventListener('click', () => {
   player.skip('prev')
 })
-nextBtn.addEventListener('click', function () {
+nextBtn.addEventListener('click', () => {
   player.skip('next')
 })
-
 progress.addEventListener(
   'touchend',
   (e) => {
@@ -340,80 +338,22 @@ progress.addEventListener(
   },
   false
 )
-
-playlistBtn.addEventListener('click', function () {
+playlistBtn.addEventListener('click', () => {
   player.togglePlaylist()
 })
-playlist.addEventListener('click', function () {
+playlist.addEventListener('click', () => {
   player.togglePlaylist()
 })
-volumeBtn.addEventListener('click', function () {
-  player.toggleVolume()
-})
-volume.addEventListener('click', function () {
-  player.toggleVolume()
-})
 
-// Setup the event listeners to enable dragging of volume slider.
-barEmpty.addEventListener('click', function (event) {
-  var per = event.layerX / parseFloat(barEmpty.scrollWidth)
-  player.volume(per)
-})
-sliderBtn.addEventListener('mousedown', function () {
-  window.sliderDown = true
-})
-sliderBtn.addEventListener('touchstart', function () {
-  window.sliderDown = true
-})
-volume.addEventListener('mouseup', function () {
-  window.sliderDown = false
-})
-volume.addEventListener('touchend', function () {
-  window.sliderDown = false
-})
-
-toggleAudio.addEventListener('click', () => {
+toggleAudioPlayer.addEventListener('click', () => {
   const isVisible =
     audioPlayer.style.opacity == '1' || audioPlayer.style.opacity == ''
   console.log({ opacity: audioPlayer.style.opacity })
   if (isVisible) {
     audioPlayer.style.opacity = '0'
-    toggleAudio.style.background = 'transparent'
+    toggleAudioPlayer.style.background = 'transparent'
   } else {
     audioPlayer.style.opacity = '1'
-    toggleAudio.style.background = 'rgb(255, 255, 255)'
+    toggleAudioPlayer.style.background = 'rgb(255, 255, 255)'
   }
 })
-
-var move = function (event) {
-  console.log('move 1')
-  if (window.sliderDown) {
-    console.log('move 2')
-    var x = event.clientX || event.touches[0].clientX
-    var startX = window.innerWidth * 0.05
-    var layerX = x - startX
-    var per = Math.min(
-      1,
-      Math.max(0, layerX / parseFloat(barEmpty.scrollWidth))
-    )
-    console.log({ per })
-    player.volume(per)
-  }
-}
-
-volume.addEventListener('mousemove', move)
-volume.addEventListener('touchmove', move)
-
-var resize = function () {
-  // Update the position of the slider.
-  var sound = player.playlist[player.index].howl
-  if (sound) {
-    var vol = sound.volume()
-    var barWidth = vol * 0.9
-    sliderBtn.style.left =
-      window.innerWidth * barWidth + window.innerWidth * 0.05 - 25 + 'px'
-  }
-}
-
-window.addEventListener('resize', resize)
-resize()
