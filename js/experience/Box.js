@@ -1,16 +1,15 @@
-class Box {
-  constructor(options) {
-    this.scene = options.scene
-    this.init()
-  }
+import * as THREE from 'three'
 
+class _Box {
   init() {
+    const { scene } = XR8.Threejs.xrScene()
+
     this.instance = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       new THREE.MeshNormalMaterial()
     )
 
-    this.scene.add(this.instance)
+    scene.add(this.instance)
   }
 
   update() {
@@ -21,4 +20,5 @@ class Box {
   }
 }
 
+const Box = new _Box()
 export default Box

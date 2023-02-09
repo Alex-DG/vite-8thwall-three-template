@@ -14,11 +14,8 @@ Run the following commands:
 # Install dependencies (only the first time)
 yarn
 
-# Run the local server at localhost:8080
+# Run the local server
 yarn dev
-
-# Run the local server at your public IP address
-yarn dev --host
 
 # Build for production in the dist/ directory
 yarn build

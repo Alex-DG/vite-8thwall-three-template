@@ -1,17 +1,13 @@
 import '../styles/index.css'
 
-import * as THREE from 'three'
-
-import { initXRScenePipelineModule } from './pipelines/xrScenePipelineModule'
+import { initThreeScenePipelineModule } from './pipelines/threeScenePipelineModule'
 import { initWorldPipelineModule } from './pipelines/worldPipelineModule'
 
 const onxrloaded = () => {
-  window.THREE = THREE
-
   XR8.addCameraPipelineModules([
     XR8.GlTextureRenderer.pipelineModule(), // Draws the camera feed.
 
-    initXRScenePipelineModule(), // Create custom Three.js scene and camera.
+    initThreeScenePipelineModule(), // Create custom Three.js scene and camera.
     initWorldPipelineModule(), // Create World object(s)
 
     XR8.XrController.pipelineModule(), // Enables SLAM tracking.

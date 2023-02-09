@@ -1,17 +1,15 @@
-import ParticlesMaterial from './shaders/ParticlesMaterial'
+import * as THREE from 'three'
 
-class ParticlesSystem {
-  constructor(options) {
-    this.scene = options.scene
-    this.count = options.count || 5000
-    this.init()
-  }
+import ParticlesMaterial from './Materials/ParticlesMaterial'
 
-  init() {
-    const count = this.count
-    this.particleMaterial = new ParticlesMaterial()
+class _ParticlesSystem {
+  init(options) {
+    const { scene } = XR8.Threejs.xrScene()
+
+    const count = options?.count || 1000
 
     const particleGeometry = new THREE.BufferGeometry()
+    this.particleMaterial = new ParticlesMaterial()
 
     const positionArray = new Float32Array(count * 3)
     const scaleArray = new Float32Array(count) // add scale randomness
@@ -19,7 +17,7 @@ class ParticlesSystem {
     for (let i = 0; i < count; i++) {
       positionArray.set(
         [
-          Math.random() * 20 - 10, // -10 to 10
+          Math.random() * 20 - 10,
           Math.random() * 20 - 10,
           Math.random() * 20 - 10,
         ],
@@ -40,7 +38,7 @@ class ParticlesSystem {
 
     this.instance = new THREE.Points(particleGeometry, this.particleMaterial)
 
-    this.scene.add(this.instance)
+    scene.add(this.instance)
   }
 
   update() {
@@ -50,4 +48,5 @@ class ParticlesSystem {
   }
 }
 
+const ParticlesSystem = new _ParticlesSystem()
 export default ParticlesSystem
