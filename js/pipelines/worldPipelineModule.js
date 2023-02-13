@@ -1,5 +1,5 @@
-import Box from '../Experience/Box'
-import ParticlesSystem from '../experience/ParticlesSystem'
+import Box from '../classes/Box'
+import ParticlesSystem from '../classes/ParticlesSystem'
 
 export const initWorldPipelineModule = () => {
   const init = () => {
@@ -10,12 +10,11 @@ export const initWorldPipelineModule = () => {
   }
 
   const render = () => {
-    Box?.update()
     ParticlesSystem?.update()
   }
 
   return {
-    name: 'init-world',
+    name: 'world-content',
 
     onStart: () => init(),
 

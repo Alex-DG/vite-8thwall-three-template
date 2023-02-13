@@ -3,10 +3,8 @@ import * as THREE from 'three'
 import ParticlesMaterial from './Materials/ParticlesMaterial'
 
 class _ParticlesSystem {
-  init(options) {
-    const { scene } = XR8.Threejs.xrScene()
-
-    const count = options?.count || 1000
+  setInstance() {
+    const count = this.options.count
 
     const particleGeometry = new THREE.BufferGeometry()
     this.particleMaterial = new ParticlesMaterial()
@@ -18,7 +16,7 @@ class _ParticlesSystem {
       positionArray.set(
         [
           Math.random() * 20 - 10,
-          Math.random() * 20 - 10,
+          Math.random() * 10 - 2,
           Math.random() * 20 - 10,
         ],
         i * 3
@@ -38,7 +36,13 @@ class _ParticlesSystem {
 
     this.instance = new THREE.Points(particleGeometry, this.particleMaterial)
 
+    const { scene } = XR8.Threejs.xrScene()
     scene.add(this.instance)
+  }
+
+  init(options) {
+    this.options = options?.count || { count: 600 }
+    this.setInstance()
   }
 
   update() {

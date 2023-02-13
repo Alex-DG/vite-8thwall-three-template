@@ -10,6 +10,7 @@ void main()
     float time = uTime * 0.001;
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
     modelPosition.y += sin(time + modelPosition.x * 100.0) * aScale * 0.2 - 0.5;
+    modelPosition.x += sin(time + modelPosition.z * 100.0) * aScale * 0.2 - 0.5;
 
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectionPosition = projectionMatrix * viewPosition;
