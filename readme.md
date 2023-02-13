@@ -8,13 +8,13 @@ Minimal reusable template project: AR 8thwall + Three.js made with Vite.js
 
 ## Setup
 
-- Create `.env.local` file in the project root and add your 8th Wall key inside:
+1. Create `.env.local` file in the project root and add your 8th Wall key inside:
 
 ```
 VITE_8THWALL_APP_KEY=xxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-- Run the following commands:
+2. Run the following commands:
 
 ```bash
 # Install dependencies (only the first time)
