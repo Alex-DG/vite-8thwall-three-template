@@ -26,3 +26,5 @@ yarn dev
 # Build for production in the dist/ directory
 yarn build
 ```
+
+_NOTE_: if there is an issue with custom shaders, bloom effect etc.. try to downgrade the Three.js version (latest tested Three.js version working was 0.145.0 I just did update the project with three@0.160.0)
