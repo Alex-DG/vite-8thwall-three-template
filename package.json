@@ -8,15 +8,15 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host"
   },
   "devDependencies": {
-    "@types/three": "0.160.0",
-    "@vitejs/plugin-basic-ssl": "1.0.2",
-    "vite-plugin-glsl": "1.2.0",
-    "vite": "5.0.10"
+    "@types/three": "0.180.0",
+    "@vitejs/plugin-basic-ssl": "2.1.0",
+    "vite-plugin-glsl": "1.5.1",
+    "vite": "7.1.5"
   },
   "dependencies": {
-    "three": "0.160.0"
+    "three": "0.180.0"
   }
 }
