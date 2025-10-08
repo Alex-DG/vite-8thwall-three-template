@@ -1,10 +1,13 @@
 {
-  "name": "vite-8thwall-three-template",
+  "name": "vite-8thwall-three-world-generation",
   "description": "Minimal reusable template project working with 8thWall and Three.js",
   "version": "0.0.0",
   "type": "module",
   "author": "Alexandre Di Guida",
   "license": "MIT",
+  "engines": {
+    "node": ">=22.x"
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
