@@ -1,5 +1,5 @@
 {
-  "name": "vite-8thwall-three-world-generation",
+  "name": "vite-8thwall-three-template",
   "description": "Minimal reusable template project working with 8thWall and Three.js",
   "version": "0.0.0",
   "type": "module",
